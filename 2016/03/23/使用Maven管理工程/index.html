@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>使用Maven管理工程 | StartX</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">使用Maven管理工程</h1><a id="logo" href="/.">StartX</a><p class="description">Started for unkown</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">使用Maven管理工程</h1><div class="post-meta">Mar 23, 2016<span> | </span><span class="category"><a href="/categories/tools/">工具</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么Maven"><span class="toc-number">1.</span> <span class="toc-text">为什么Maven</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装与配置-Maven"><span class="toc-number">2.</span> <span class="toc-text">安装与配置 Maven</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-Maven"><span class="toc-number">2.1.</span> <span class="toc-text">安装 Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Maven"><span class="toc-number">2.2.</span> <span class="toc-text">配置Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与Eclipse集成"><span class="toc-number">2.3.</span> <span class="toc-text">与Eclipse集成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#牛刀小试"><span class="toc-number">3.</span> <span class="toc-text">牛刀小试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hello-World"><span class="toc-number">3.1.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#约定优于配置"><span class="toc-number">3.2.</span> <span class="toc-text">约定优于配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Eclipse"><span class="toc-number">3.3.</span> <span class="toc-text">使用Eclipse</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven核心：POM"><span class="toc-number">4.</span> <span class="toc-text">Maven核心：POM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建生命周期"><span class="toc-number">4.1.</span> <span class="toc-text">构建生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建阶段"><span class="toc-number">4.2.</span> <span class="toc-text">构建阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建目标"><span class="toc-number">4.3.</span> <span class="toc-text">构建目标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven仓库"><span class="toc-number">5.</span> <span class="toc-text">Maven仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">6.</span> <span class="toc-text">参考资料</span></a></li></ol></div></div><div class="post-content"><p>工欲善其事，必先利其器。Maven，作为一个项目管理的最佳实践，主要用于项目构建，依赖管理，项目信息管理。</p>
+<h2 id="为什么Maven"><a href="#为什么Maven" class="headerlink" title="为什么Maven"></a>为什么Maven</h2><p>简而言之，Maven 可以方便地完成以下工作：</p>
+<ul>
+<li><p>文档和代码的生成和管理</p>
+</li>
+<li><p>代码的编译、测试和打包</p>
+</li>
+<li><p>打包好的代码进行分发或者部署</p>
+</li>
+</ul>
+<h2 id="安装与配置-Maven"><a href="#安装与配置-Maven" class="headerlink" title="安装与配置 Maven"></a>安装与配置 <strong>Maven</strong></h2><h3 id="安装-Maven"><a href="#安装-Maven" class="headerlink" title="安装 Maven"></a>安装 <a href="https://maven.apache.org/" target="_blank" rel="external">Maven</a></h3><p>以windows为例，从 <a href="https://maven.apache.org/" target="_blank" rel="external">Maven官网</a> 下载好zip包，解压到一个任意目录，然后将路径添加加环境变量 <strong>M2_HOME</strong> ,值为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\dev_tools\apache-maven-3.3.9</span><br></pre></td></tr></table></figure>
+<p>然后在Path后面追加 <em>;%M2_HOME%\bin</em> ，执行 <em>mvn -v</em> ，出现相应版本信息即安装成功</p>
+<h3 id="配置Maven"><a href="#配置Maven" class="headerlink" title="配置Maven"></a>配置Maven</h3><p>Maven的配置文件为 <strong>settings.xml</strong> ,分为两种，一种是全局的，位于 <em>$M2_HOME/conf/settings.xml</em> ，一种用户级别的，需要手动添加，位于 <em>${user.dir}/.m2/settings.xml</em>。 当两个文件同时存在时，文件内容将被融合，相同设置将以用户设置的settings.xml为准。</p>
+<p>本人配置的第一项就是把本地仓库目录（默认为 <em>${user.home}/.m2/repository</em>）配走，因为下载的依赖越多，占用系统盘空间越大。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;localRepository&gt;E:\maven-dependcies&lt;/localRepository&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="与Eclipse集成"><a href="#与Eclipse集成" class="headerlink" title="与Eclipse集成"></a>与Eclipse集成</h3><p>新版的Eclipse已经自带了Maven, 但是个人觉得并不是很好用，可以配置Eclipse使用新安装的Maven.</p>
+<p>依次进入 <em>Windows -&gt; Preferences -&gt; Maven -&gt; installations -&gt; Add</em>, 在对话框 <strong>Installation home:</strong> 中填入Maven的路径 <strong>D:\dev_tools\apache-maven-3.3.9</strong> ，<strong>Installation name:</strong> 随便，保存、应用即可。</p>
+<h2 id="牛刀小试"><a href="#牛刀小试" class="headerlink" title="牛刀小试"></a>牛刀小试</h2><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><p>首先创建一个HelloWorld项目感受一下，在一目录下执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=com.study.helloworld -DartifactId=helloworld -Dpackage=com.study.helloworld -Dversion=1.0-SNAPSHOT</span><br></pre></td></tr></table></figure>
+<p>第一次执行mvn会去中央仓库下载相应的库到本地仓库中。中间需要按两次 <strong>回车</strong> 即完成项目的创建。</p>
+<h3 id="约定优于配置"><a href="#约定优于配置" class="headerlink" title="约定优于配置"></a>约定优于配置</h3><p>项目创建后，在 <em>helloworld</em> 目录下</p>
+<ul>
+<li><p>源代码目录：<em>\src\main\java</em></p>
+</li>
+<li><p>资源文件目录：<em>\src\main\resources</em></p>
+</li>
+<li><p>测试代码目录：<em>\src\test\java</em></p>
+</li>
+<li><p>测试资源目录：<em>\src\test\resources</em></p>
+</li>
+</ul>
+<p>再执行一下 <em>mvn package</em>，得到新的目录</p>
+<ul>
+<li><p>编译好的字节码目录：<em>\target\classes</em></p>
+</li>
+<li><p>JAR 文件目录：<em>\target</em></p>
+</li>
+</ul>
+<h3 id="使用Eclipse"><a href="#使用Eclipse" class="headerlink" title="使用Eclipse"></a>使用Eclipse</h3><p>在Eclipse中使用Maven很简单，进入 <em>File -&gt; New -&gt; Project -&gt; Maven -&gt; Maven Project</em>， 勾选 <em>Create a simple project</em>，填入 <strong>groupId</strong>、 <strong>artifactId</strong> 即可。</p>
+<p>在实际项目中更多的情况是，创建一个Maven Project后，在Project中创建Maven module。</p>
+<h2 id="Maven核心：POM"><a href="#Maven核心：POM" class="headerlink" title="Maven核心：POM"></a>Maven核心：POM</h2><p>Maven的核心思想都体现在POM（Project Object Model）文件中， 后续详解。</p>
+<p>当使用Maven构建项目时，会遵循一个构建生命周期。该生命周期分为多个构建阶段，而构建阶段又分为多个构建目标。Maven的构建周期、构建阶段和目标的更多细节请参考 <a href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" target="_blank" rel="external">Maven构建周期</a></p>
+<h3 id="构建生命周期"><a href="#构建生命周期" class="headerlink" title="构建生命周期"></a>构建生命周期</h3><p>Maven有三个内嵌的构建生命周期：</p>
+<p><strong>default</strong></p>
+<p><strong>clean</strong></p>
+<p><strong>site</strong></p>
+<p>每一个构建生命期关注项目构建的不同方面。因此，它们是独立地执行的。Maven可以执行多个生命期，但是它们是串行执行的，相互独立，就像执行了多条独立的Maven命令。</p>
+<p>default生命期关注的是项目的编译和打包。clean生命期关注的是从输出目录中删掉临时文件，包括自动生成的源文件、编译后的类文件，之前版本的jar文件等。site生命期关注的是为项目生成文档。实际上，site可以使用文档为项目生成一个完整的网站。</p>
+<h3 id="构建阶段"><a href="#构建阶段" class="headerlink" title="构建阶段"></a>构建阶段</h3><p>每一个构建生命期被分为一系列的构建阶段，可以执行一个构建生命期，如clean或site，一个构建阶段，如default生命期的install，或者一个构建目标，如dependency:copy-dependencies。注意：不能直接执行default生命期，你需要指定default生命期中的一个构建阶段或者构建目标。</p>
+<p>当执行一个构建阶段时，所有在该构建阶段之前的构建阶段（根据约定的标准构建顺序）都会被执行。因此，执行install阶段，意味着所有位于install阶段前的构建阶段都会被执行，然后才执行install阶段。</p>
+<p>default生命期更多的关注于构建代码。由于不能直接执行default生命期，需要执行其中一个构建阶段或者构建目标。default生命期包含了相当多的构建阶段和目标，最常用的构建阶段有：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">构建阶段</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">validate</td>
+<td style="text-align:left">验证项目的正确性，以及所有必需的信息都是否都存在。同时也会确认项目的依赖是否都下载完毕。</td>
+</tr>
+<tr>
+<td style="text-align:left">compile</td>
+<td style="text-align:left">编译项目的源代码</td>
+</tr>
+<tr>
+<td style="text-align:left">test</td>
+<td style="text-align:left">选择合适的单元测试框架，对编译后的源码执行测试；这些测试不需要代码被打包或者部署。</td>
+</tr>
+<tr>
+<td style="text-align:left">package</td>
+<td style="text-align:left">将编译后的代码以可分配的形式打包，如Jar包。</td>
+</tr>
+<tr>
+<td style="text-align:left">install</td>
+<td style="text-align:left">将项目打包后安装到本地仓库，可以作为其它项目的本地依赖。</td>
+</tr>
+<tr>
+<td style="text-align:left">deploy</td>
+<td style="text-align:left">将最终的包复制到远程仓库，与其它开发者和项目共享。    </td>
+</tr>
+</tbody>
+</table>
+<p>将构建阶段的名称作为参数传给mvn命令，就是执行该构建阶段，如：</p>
+<p>mvn package<br>该示例执行package构建阶段，因此在Maven的构建阶段序列中所有位于该阶段之前的阶段也都会被执行。</p>
+<p>如果标准的Maven构建阶段和目标无法满足项目的需要，可以创建Maven插件增加你需要的构建功能。</p>
+<h3 id="构建目标"><a href="#构建目标" class="headerlink" title="构建目标"></a>构建目标</h3><p>构建目标是Maven构建过程中最细化的步骤。一个目标可以与一个或多个构建阶段绑定，也可以不绑定。如果一个目标没有与任何构建阶段绑定，只能将该目标的名称作为参数传递给mvn命令来执行它。如果一个目标绑定到多个构建阶段，该目标在绑定的构建阶段执行的同时被执行。</p>
+<h2 id="Maven仓库"><a href="#Maven仓库" class="headerlink" title="Maven仓库"></a>Maven仓库</h2><p>使用 <strong>Ant</strong> 来管理项目时，我们一般都需要一个 /lib文件夹，各种依赖的Jar包都会放进去，而且为了协作的一致性，通常还需要放到代码版本管理系统中。使用 <strong>Maven</strong> 就简单多了，基于依赖的信息，Maven就可以自动地以递归的方式下载所有的依赖，直到整个依赖树都下载完毕并放到你的本地仓库中。</p>
+<p>Maven有三种类型的仓库：</p>
+<p> <strong>本地仓库</strong>：本地仓库默认在用户目录下，包含了下载的所有依赖</p>
+<p> <strong>中央仓库</strong>：中央仓库由Maven自己提供的，本地仓库中的没有依赖默认都会去中央仓库查找，下载后会存放到本地仓库</p>
+<p> <strong>远程仓库</strong>：远程仓库是远程服务器上可访问的仓库， 本质上是一个本地中央仓库，一般团队内部会设置一个内部的远程仓库，搭建一个Nexus私服，这样可以解决安全共享，网络代理，尤其是协同开发等问题。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="http://www.tianmaying.com/tutorial/maven-demo" target="_blank" rel="external">http://www.tianmaying.com/tutorial/maven-demo</a></li>
+<li><a href="http://www.php-note.com/article/detail/864" target="_blank" rel="external">http://www.php-note.com/article/detail/864</a></li>
+<li><a href="http://www.oracle.com/technetwork/cn/community/java/apache-maven-getting-started-1-406235-zhs.html" target="_blank" rel="external">http://www.oracle.com/technetwork/cn/community/java/apache-maven-getting-started-1-406235-zhs.html</a></li>
+<li><a href="http://1358440610-qq-com.iteye.com/blog/2192984" target="_blank" rel="external">http://1358440610-qq-com.iteye.com/blog/2192984</a></li>
+</ol>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://brinliu.github.io/2016/03/23/使用Maven管理工程/" data-id="cimc194nm00022whixk7nid3h" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Maven/">Maven</a><a href="/tags/Eclipse/">Eclipse</a></div><div class="post-nav"><a href="/2016/03/21/利用Github搭建博客续之Hexo简单定制/" class="next">利用Github搭建博客续之Hexo简单定制</a></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://brinliu.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">工具</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Maven/" style="font-size: 15px;">Maven</a> <a href="/tags/Eclipse/" style="font-size: 15px;">Eclipse</a> <a href="/tags/GitHub/" style="font-size: 15px;">GitHub</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/使用Maven管理工程/">使用Maven管理工程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/21/利用Github搭建博客续之Hexo简单定制/">利用Github搭建博客续之Hexo简单定制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/20/利用Github搭建博客/">利用GitHub搭建博客</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/" title="GitHub" target="_blank">GitHub</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">StartX.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
